@@ -1,0 +1,40 @@
+﻿@model List<VentaModel>
+@{
+    ViewData["Title"] = "ListarDia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class = "card">
+    <div class = "card-header">
+        Lista Ventas del Dia
+    </div>
+    <div class="card-body">
+        <hr />
+        <table class="table table-bordered ">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Dia de la venta</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.Nombre</td>
+                        <td>@i.Precio</td>
+                        <td>@i.DiaVenta?.ToString("MMMM/dd/yyyy")</td>
+                    <td>
+                      <!--
+                          <a onclick="btnGenerarPDF_Click" class="btn btn-danger btn-sm">Descarga</a>
+                      -->  
+                    </td>
+                   </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-outline-primary">Volver a la lista</a>        
+    </div>
+</div>
+

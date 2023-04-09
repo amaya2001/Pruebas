@@ -1,0 +1,42 @@
+﻿
+@model VentaModel
+@{
+    ViewData["Title"] = "Guardar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+  <div class="card-header">
+    Crear Venta
+  </div>
+  <div class="card-body">
+  <form asp-action = "Guardar" asp-controller="Mantenedor" method="post">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input asp-for = "Nombre" type="text" class="form-control">
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Precio</label>
+        <input asp-for = "Precio" type="text" class="form-control">
+        <span asp-validation-for="Precio" class="text-danger"></span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Dia de la venta</label>
+        <input asp-for = "DiaVenta" type="text" class="form-control">
+        <span asp-validation-for="DiaVenta" class="text-danger"></span>
+      </div>
+
+                    @if (ViewData["Mensaje"] != null)
+              {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+              }
+
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-outline-primary">Volver a la lista</a>
+  </form>
+  </div>
+</div>
+

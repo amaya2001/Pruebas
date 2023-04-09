@@ -1,0 +1,45 @@
+﻿@model Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="row mt-5">
+        <div class="col-sm-4 offset-sm-4">
+              <h1 class="display-3" >
+                Login
+            </h1>
+            <form asp-action = "Login" asp-controller="Accesos" method="post">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Id</label>
+                <input asp-for = "Nombre" type="text" class="form-control">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+              </div>
+              <div class="mb-3">
+
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" name = "Clave" class="form-control">
+                <span asp-validation-for="Clave" class="text-danger"></span>
+              </div>
+                @if (ViewData["Mensaje"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary">ingresar</button>
+              <a href="@Url.Action("Registro", "Accesos" )">Registrate</a>
+            </form>
+        </div>
+    </div>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

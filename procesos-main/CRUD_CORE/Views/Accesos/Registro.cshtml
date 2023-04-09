@@ -1,0 +1,58 @@
+﻿@model Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrat</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="row mt-5">
+        <div class="col-sm-4 offset-sm-4">
+              <h1 class="display-3" >
+                Registrar
+            </h1>
+            <form asp-action = "Registro" asp-controller="Accesos" method="post">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Id</label>
+                <input type="text" name = "Nombre" class="form-control">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Correo</label>
+                <input type="text" name = "Correo" class="form-control">
+                <span asp-validation-for="Correo" class="text-danger"></span>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" name = "Clave" class="form-control">
+                <span asp-validation-for="Clave" class="text-danger"></span>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Confirmar Contraseña</label>
+                <input type="password" name = "ConfirmarClave" class="form-control">
+                <span asp-validation-for="ConfirmarClave" class="text-danger"></span>
+              </div>
+              @if (ViewData["Mensaje"] != null)
+              {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+              }
+
+              <button type="submit" class="btn btn-primary">Registrar</button>
+              <a href="@Url.Action("Login", "Accesos" )">Volver</a>
+            </form>
+        </div>
+    </div>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
