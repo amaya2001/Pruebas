@@ -1,1 +1,1 @@
-# Nicolle Naranjo, Juan Esteban Amaya, Fernando Vergara 
+# Nicolle Naranjo, María José Suarez, Juan Esteban Amaya. 
