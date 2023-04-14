@@ -5,7 +5,7 @@ using CRUD_CORE.Models;
 using Rotativa.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using CRUD_CORE.Permisos;
-
+using System.Text.RegularExpressions;
 
 namespace CRUD_CORE.Controllers
 {
@@ -43,7 +43,7 @@ namespace CRUD_CORE.Controllers
 
             if (nombre.Length < 3 || nombre.Length > 31)
             {
-                ViewData["Mensaje"] = "Nombre debe minimo 3 caracteres y maximo 30";
+                ViewData["Mensaje"] = "El nombre debe minimo 3 caracteres y maximo 30";
                 return View();
             }
 
@@ -58,9 +58,9 @@ namespace CRUD_CORE.Controllers
                 ViewData["Mensaje"] = "El precio debe estar entre 20.000 y 2.000.000";
                 return View();
             }
+            
 
 
-           
             var respuesta = _VentaDatos.Guardar(oVenta);
             if (respuesta)
                 return RedirectToAction("Listar");
@@ -103,9 +103,10 @@ namespace CRUD_CORE.Controllers
 
         }
 
-        public void Generarpdf()
+        public IActionResult Generarpdf()
         {
             _VentaDatos.GenerarPDF();
+            return RedirectToAction("Listar");
         }
 
 

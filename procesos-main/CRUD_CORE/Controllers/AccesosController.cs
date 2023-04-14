@@ -61,14 +61,9 @@ namespace CRUD_CORE.Controllers
                     }
                 
                 string nombre = new string(oUsuario.Nombre.ToString());
-                if (!int.TryParse(nombre, out _))
+                if (!int.TryParse(nombre, out _) || nombre.Length < 3 || nombre.Length > 9)
                 {
-                    ViewData["Mensaje"] = "Id deben ser solo numeros";
-                    return View();
-                }
-
-                if (nombre.Length < 3 || nombre.Length > 9) {
-                    ViewData["Mensaje"] = "Id debe minimo 3 caracteres y maximo 10";
+                    ViewData["Mensaje"] = "Id deben ser solo numeros y debe minimo 3 caracteres y maximo 10";
                     return View();
                 }
 
@@ -77,7 +72,6 @@ namespace CRUD_CORE.Controllers
                     ViewData["Mensaje"] = "El correo electrónico no tiene un formato válido";
                     return View();
                 }
-
 
                 using (SqlConnection cn = new SqlConnection(cadena))
                 {
