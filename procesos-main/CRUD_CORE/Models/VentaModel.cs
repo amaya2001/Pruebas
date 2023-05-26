@@ -19,6 +19,7 @@ namespace CRUD_CORE.Models
 
         [Required(ErrorMessage = "El campo Dia de la venta es obligatorio")]
         public DateTime? DiaVenta { get; set; }
+
     }
 }
  
